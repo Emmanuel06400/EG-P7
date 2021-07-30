@@ -14,13 +14,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `database_development_groupomania` DEFAULT CHARACTER SET utf8 ;
+USE `database_development_groupomania` ;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`USERS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`USERS` (
+CREATE TABLE IF NOT EXISTS `database_development_groupomania`.`USERS` (
   `id` INT NOT NULL,
   `username` VARCHAR(50) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Posts`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Posts` (
+CREATE TABLE IF NOT EXISTS `database_development_groupomania`.`Posts` (
   `id` INT NOT NULL,
   `publication_date` DATETIME NOT NULL,
   `user_id` SMALLINT(5) NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Posts` (
   INDEX `fk_Posts_USERS1_idx` (`USERS_id` ASC) VISIBLE,
   CONSTRAINT `fk_Posts_USERS1`
     FOREIGN KEY (`USERS_id`)
-    REFERENCES `mydb`.`USERS` (`id`)
+    REFERENCES `database_development_groupomania`.`USERS` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -53,7 +53,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`COMMENTS`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`COMMENTS` (
+CREATE TABLE IF NOT EXISTS `database_development_groupomania`.`COMMENTS` (
   `id` INT NOT NULL,
   `publication_date` DATETIME NOT NULL,
   `content` VARCHAR(45) NOT NULL,
@@ -64,12 +64,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`COMMENTS` (
   INDEX `fk_COMMENTS_Posts1_idx` (`Posts_id` ASC) VISIBLE,
   CONSTRAINT `fk_COMMENTS_USERS1`
     FOREIGN KEY (`USERS_id`)
-    REFERENCES `mydb`.`USERS` (`id`)
+    REFERENCES `database_development_groupomania`.`USERS` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_COMMENTS_Posts1`
     FOREIGN KEY (`Posts_id`)
-    REFERENCES `mydb`.`Posts` (`id`)
+    REFERENCES `database_development_groupomania`.`Posts` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

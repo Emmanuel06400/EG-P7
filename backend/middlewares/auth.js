@@ -1,22 +1,26 @@
-require('dotenv').config();
+// Imports
 const jwt = require('jsonwebtoken');
-//const Cookies = require('cookies');
-const cryptojs = require('crypto-js');
 
+// Exportation de la fonction d'authentification
 module.exports = (req, res, next) => {
-  try {
-    const cryptedCookie = new Cookies(req, res).get('snToken');
-    const cookie = JSON.parse(cryptojs.AES.decrypt(cryptedCookie, process.env.COOKIE_KEY).toString(cryptojs.enc.Utf8));
+    // Récupération du token dans les paramètres
+    const authHeader = req.headers.authorization;
 
-    const token = jwt.verify(cookie.token, process.env.JWT_KEY);
+    // Si l'utilisateur possède une autorisation,
+    // on déclare le token et on le vérifie, s'il n'y a pas
+    // d'erreur, on le next, sinon on renvoie un statut 403
+    if (authHeader) {
+        const token = authHeader.split(' ')[1];
 
-    if (cookie.userId && cookie.userId !== token.userId) {
-      console.log("User ID non valable");
-      throw "User ID non valable";
-    } else {
-      next();
+        jwt.verify(token, 'DEVELOPMENT_TOKEN_SECRET', (err, user) => {
+            if (err) {
+                return res.status(403);
+            }
+            next();
+        });
     }
-  } catch (error) {
-    res.status(401).json({ error: 'Requête non authentifiée' });
-  }
-}
+    // Sinon, on renvoie le statut 401 Unauthorized
+    else {
+        res.status(401).json({error:"accès non authorisé"});
+    }
+};

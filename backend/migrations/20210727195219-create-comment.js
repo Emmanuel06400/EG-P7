@@ -25,7 +25,8 @@ module.exports = {
         refernces: {
           model: 'Posts',
           key:'id'
-      },
+      }
+    },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

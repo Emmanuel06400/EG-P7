@@ -31,18 +31,17 @@ app.use(bodyParser.json());
 // Sécurisation des headers
 app.use(helmet());
 
-app.get(console.log('test'));
 
 app.use((req, res, next) => {
   res.status(200).json({ error: 'Requête  authentifiée' })
 });
 
  //ROUTES
- /*
+ 
  app.use('/images', express.static(path.join(__dirname, 'images')));
 
  app.use('/api/user', userRoutes);
  app.use('/api/post', postRoutes);
 
-  //EXPORT*/
+  //EXPORT
 module.exports = app;
