@@ -25,6 +25,7 @@ fs
     db[model.name] = model;
   });
 
+//error console.log('olala');
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db);

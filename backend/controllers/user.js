@@ -1,9 +1,12 @@
+
 //Import
 let bcrypt = require('bcrypt');
 let jwt = require('jsonwebtoken');
 let models = require('../models');
 let utils = require('../utils/jwtUtils');
 let verifInput = require('../utils/verifInput')
+
+
 
 //Création d'un user
 exports.signup = (req, res) => {
