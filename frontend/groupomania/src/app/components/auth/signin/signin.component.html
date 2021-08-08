@@ -1,6 +1,7 @@
+
 <main class="main-wrapper">
     <div class="login">
-      <form class="login--form">
+      <form class="login--form" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
         <h1>Créer un compte</h1>
         <fieldset>
           <label for="name">Nom</label>
@@ -14,12 +15,12 @@
           <label for="password">Mot de passe</label>
           <input id="password" type="password" formControlName="password">
         </fieldset>
-        <fieldset>
-          <label for="passwordConfirmation">Confirmer le mot de passe</label>
-          <input id="passwordConfirmation" type="password" formControlName="passwordConfirmation">
-        </fieldset>
-        <button class="btn" type="submit" >Se connecter</button>
+        <button class="btn" type="submit" [disabled]="signinForm.invalid" (click)="onSubmit()">Se connecter</button>
       </form>
+      <p class="text-danger">{{ errorMsg }}</p>
+      <pre>
+        {{ signinForm.value | json }}
+      </pre>
       <p>Vous avez déjà un compte ? <a routerLink="/signup">Identifiez vous !</a></p>
     </div>
   </main>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+//import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { PostService } from './services/post.service';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 @NgModule({
@@ -21,7 +23,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     SignupComponent,
     SigninComponent,
     HeaderComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    FooterComponent
     
   ],
   imports: [
@@ -29,7 +32,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    //RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthGuardService, AuthService, PostService],
   bootstrap: [AppComponent]

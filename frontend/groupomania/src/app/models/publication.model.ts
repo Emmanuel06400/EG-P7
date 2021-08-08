@@ -5,8 +5,6 @@ export interface Publication {
     body: string;
     media: string;
     idusers: number;
-    createdAt: string;
-    updatedAt: string;
     user: {
         firstname: string,
         lastname: string,
