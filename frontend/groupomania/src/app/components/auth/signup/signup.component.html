@@ -1,3 +1,4 @@
+<h1>Connexion</h1>
 <form [formGroup]="signupForm" >
   <div class="form-group">
     <label for="email">Email</label>
@@ -7,6 +8,6 @@
     <label for="password">Password</label>
     <input type="password" class="form-control" id="password" formControlName="password">
   </div>
-  <button [disabled]="signupForm.invalid" (click)="onSignup()">SIGN UP</button>
+  <button [disabled]="signupForm.invalid" (click)="onSubmit()">SIGN UP</button>
   <p class="text-danger">{{ errorMsg }}</p>
 </form>

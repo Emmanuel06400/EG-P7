@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
 
+
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { PostService } from './services/post.service';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     SigninComponent,
     HeaderComponent,
     MyProfileComponent,
-    FooterComponent
+    FooterComponent,
+    PostsComponent
     
   ],
   imports: [

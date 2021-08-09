@@ -9,7 +9,7 @@ const auth = require('../middleware/auth');
 
 
 //Routage
-router.post("/signup", userCtrl.signup);
+router.post("/signup",console.log('signup du back'), userCtrl.signup);
 router.post("/login", userCtrl.login);
 router.get('/me', auth, userCtrl.userProfil);
 router.put('/update',auth, userCtrl.changePwd);
