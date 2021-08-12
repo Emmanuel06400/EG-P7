@@ -2,33 +2,36 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../models/user.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   
   isAuth$ = new BehaviorSubject<boolean>(false);
-  private authToken!: string;
+  //private authToken!: string;
   private userId!: string;
 
   constructor(private http: HttpClient,
     private router: Router) {}
 
-createUser(email: string, password: string, name: string) {
-  return new Promise((resolve, reject) => {
-    this.http.post('http://localhost:3000/api/auth/signup', {email: email, password: password, name: name}).subscribe/*(
-      (response: { message: string }) => {
-        resolve(response);
-      },
-      (error) => {
-        reject(error);
-      }
-    );
-  })*/;
-})
-}
+    createUser(email: string, password: string, name: string): Promise<number>{
+      return new Promise<number>((resolve, reject) => {
+          this.http.post('http://localhost:4000/', {email: email, password: password, name: name}).toPromise()
+          .then((res: any) => {
+            // Success
+            resolve(1);
+          },
+            err => {
+              // Error
+              reject(err);
+            }
+          );
+      })
+  }
 
 
 /*
